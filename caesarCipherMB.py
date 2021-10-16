@@ -1,10 +1,21 @@
 # Caesar Cipher
 # https://nostarch.com/crackingcodes/ (BSD Licensed)
-# Named after Julius Caesar, the Caesar cipher is one of the oldest cipers and is based on the
+# Named after Julius Caesar, the Caesar cipher is one of the oldest ciphers and is based on the
 # simplest monoalphabetic cipher. A Caesar cipher is categorized as a substitution cipher
 # in which the alphabet in the plain text is shifted by a fixed number down the alphabet.
 
 import pyperclip
+
+# Print greeting:
+
+print('Named after Julius Caesar, the Caesar Cipher is one of the oldest ciphers and is based on the')
+print('simplest monoalphabetic cipher. A Caesar cipher is categorized as a substitution cipher')
+print('in which the alphabet in the plain text is shifted by a fixed number down the alphabet.\n')
+print('While the original Caesar Cipher only uses only letters, this program adds symbols to the')
+print('list as well as letters allowing for not only more complex messages but a longer and stronger keyspace.\n')
+print('To use this program, Enter the message you wish to either encrypt or decrypt. Then choose the value')
+print('of the shift by choosing a number between 1 and 95.\n')
+
 
 # The string to be encrypted/decrypted:
 
@@ -12,7 +23,7 @@ message = input('Enter message: ')
 
 # The encryption/decryption key:
 
-key = 19 # Key can be any number integer from 0 to 94 and represents the amount of shift.
+key = int(input('Enter a number between 1 - 94: ')) # Key can be any number integer from 0 to 94 and represents the amount of shift.
 
 # Whether the program encrypts or decrypts:
 
