@@ -1,5 +1,8 @@
 # Caesar Cipher
 # https://nostarch.com/crackingcodes/ (BSD Licensed)
+# Named after Julius Caesar, the Caesar cipher is one of the oldest cipers and is based on the
+# simplest monoalphabetic cipher. A Caesar cipher is categorized as a substitution cipher
+# in which the alphabet in the plain text is shifted by a fixed number down the alphabet.
 
 import pyperclip
 
@@ -9,7 +12,7 @@ message = input('Enter message: ')
 
 # The encryption/decryption key:
 
-key = 19
+key = 19 # Key can be any number integer from 0 to 66 and represents the amount of shift.
 
 # Whether the program encrypts or decrypts:
 
