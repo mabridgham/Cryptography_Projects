@@ -5,7 +5,7 @@ import pyperclip
 
 # The string to be encrypted/decrypted:
 
-message = 'This is my secret message.'
+message = input('Enter message: ')
 
 # The encryption/decryption key:
 
@@ -56,4 +56,3 @@ for symbol in message:
 
 print(translated)
 pyperclip.copy(translated)
-
