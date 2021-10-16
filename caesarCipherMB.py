@@ -12,7 +12,7 @@ message = input('Enter message: ')
 
 # The encryption/decryption key:
 
-key = 19 # Key can be any number integer from 0 to 66 and represents the amount of shift.
+key = 19 # Key can be any number integer from 0 to 94 and represents the amount of shift.
 
 # Whether the program encrypts or decrypts:
 
@@ -20,7 +20,7 @@ mode = 'encrypt' # Set to either 'encrypt' or 'decrypt'
 
 # Every possible symbol that can be encrypted:
 
-SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz[\\]^_`{|}~ !"#$%&\'()*+,-./0123456789:;<=>?@'
 
 # Store the encrypted/decrypted form of the message:
 
