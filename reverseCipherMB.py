@@ -1,5 +1,7 @@
 # Reverse Cipher
 # https://www.nostarch.com/crackingcodes (BSD Licensed)
+# The Reverse Cipher encrypts a message by printing it in reverse order.
+# So "Hello, world!" encrypts to "!dlrow ,olleH"
 
 message = 'Three can keep a secret, if two of them are dead.'
 translated = ''
