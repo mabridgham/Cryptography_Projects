@@ -1,5 +1,8 @@
 # Caesar Cipher Hacker
 # https://www.nostarch.com/crackingcodes (BSD Licensed)
+# Named after Julius Caesar, the Caesar cipher is one of the oldest cipers and is based on the
+# simplest monoalphabetic cipher. A Caesar cipher is categorized as a substitution cipher
+# in which the alphabet in the plain text is shifted by a fixed number down the alphabet.
 
 message = 'guv6Jv6Jz!J6rp5r7Jzr66ntrM'
 SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
