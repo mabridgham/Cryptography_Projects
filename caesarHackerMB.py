@@ -4,7 +4,10 @@
 # simplest monoalphabetic cipher. A Caesar cipher is categorized as a substitution cipher
 # in which the alphabet in the plain text is shifted by a fixed number down the alphabet.
 
-message = 'guv6Jv6Jz!J6rp5r7Jzr66ntrM'
+# Get message from user:
+
+message = input('Enter message to be decoded: ')
+
 SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
 
 # Loop through every possible key:
