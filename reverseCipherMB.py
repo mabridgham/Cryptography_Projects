@@ -3,6 +3,12 @@
 # The Reverse Cipher encrypts a message by printing it in reverse order.
 # So "Hello, world!" encrypts to "!dlrow ,olleH"
 
+# Print greeting:
+
+print("""The Reverse Cipher encrypts a message by printing it in reverse order.
+So "Hello, world!" encrypts to "!dlrow ,olleH" To use this program, simply enter
+your message below.\n""")
+
 # Get message from user:
 
 message = input('Enter message: ')
