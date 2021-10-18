@@ -1,9 +1,14 @@
 # Vigenere Cipher Dictionary Hacker
 # https://www.nostarch.com/crackingcodes/ (BSD Licensed)
+# The Vigenere Cipher is a method of encrypting alphabetic text by using
+# a series of interwoven Caesar ciphers, based on the letters of a keyword.
+# It employs a form of polyalphabetic substitution.
 
 import detectEnglishMB, vigenereCipherMB, pyperclip
 
+
 def main():
+
     ciphertext = """Tzx isnz eccjxkg nfq lol mys bbqq I lxcz."""
     hackedMessage = hackVigenereDictionary(ciphertext)
 
@@ -16,6 +21,7 @@ def main():
 
 
 def hackVigenereDictionary(ciphertext):
+
     fo = open('dictionary.txt')
     words = fo.readlines()
     fo.close()
@@ -24,7 +30,9 @@ def hackVigenereDictionary(ciphertext):
         word = word.strip() # Remove the newline at the end.
         decryptedText = vigenereCipherMB.decryptMessage(word, ciphertext)
         if detectEnglishMB.isEnglish(decryptedText, wordPercentage=40):
+
             # Check with user to see if the decrypted key has been found:
+
             print()
             print('Possible encryption break:')
             print('Key ' + str(word) + ': ' + decryptedText[:100])
@@ -34,6 +42,7 @@ def hackVigenereDictionary(ciphertext):
 
             if response.upper().startswith('D'):
                 return decryptedText
+
 
 if __name__ == '__main__':
     main()
