@@ -1,12 +1,15 @@
 # Simple Substitution Keyword Cipher
 # http://inventwithpython.com/hacking (BSD Licensed)
+# The Substitution Cipher is a cipher in which the letters of the plaintext
+# are systematically replaced by substitute letters. Use a keyword as a key.
 
 import pyperclip, simpleSubCipherMB
 
 def main():
-    myMessage = r"""Your cover is blown."""
+    
+    myMessage = """Your cover is blown."""
     myKey = 'alphanumeric'
-    myMode = 'encrypt' # set to 'encrypt' or 'decrypt'
+    myMode = 'encrypt' # Set to 'encrypt' or 'decrypt'
 
 
     print('The key used is:')
@@ -26,17 +29,21 @@ def main():
 
 
 def encryptMessage(key, message):
+    
     key = makeSimpleSubKey(key)
     return simpleSubCipherMB.encryptMessage(key, message)
 
 
 def decryptMessage(key, message):
+    
     key = makeSimpleSubKey(key)
     return simpleSubCipherMB.decryptMessage(key, message)
 
 
 def makeSimpleSubKey(keyword):
-    # create the key from the keyword
+    
+    # Create the key from the keyword
+    
     newKey = ''
     keyword = keyword.upper()
     keyAlphabet = list(simpleSubCipherMB.LETTERS)
