@@ -7,6 +7,9 @@ not one that I am working on. It was all obtained from the sources below, specif
 I will be uploading it for convenience for now until I can figure out how to integrate it into the programs 
 I have so they no longer need it.
 
+A note on running these programs:
+You need the latest version of Python to run them. Also if it requires another program or .txt file, they all must
+be in the same folder to run properly.
 
 
 Sources:
