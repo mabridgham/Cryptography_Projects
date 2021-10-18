@@ -16,3 +16,4 @@ Sources:
 https://www.nostarch.com/crackingcodes (BSD Licensed)
 https://www.nostarch.com/impracticalpythonprojects (BSD Licensed)
 https://www.nostarch.com/real-world-python (BSD Licensed)
+http://inventwithpython.com/hacking (BSD Licensed)
