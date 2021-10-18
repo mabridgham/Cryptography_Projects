@@ -1,15 +1,19 @@
 # Vigenere Cipher (Polyalphabetic Substitution Cipher)
-# https://www.nostarch.com/crackingcodes (BSD Licensed)
+# https://www.nostarch.com/crackingcodes/ (BSD Licensed)
+# The Vigenere Cipher is a method of encrypting alphabetic text by using
+# a series of interwoven Caesar ciphers, based on the letters of a keyword.
+# It employs a form of polyalphabetic substitution.
 
 import pyperclip
 
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def main():
+
     # This text can be copy/pasted from https://invpy.com/vigenereCipher.py:
     myMessage = """Alan Mathison Turing was a British mathematician, logician, cryptanalyst, and computer scientist."""
     myKey = 'ASIMOV'
-    myMode = 'encrypt' # Set to either 'encrypt' or 'decrypt'.
+    myMode = 'encrypt' # Set to either 'encrypt or 'decrypt'.
 
     if myMode == 'encrypt':
         translated = encryptMessage(myKey, myMessage)
@@ -24,14 +28,17 @@ def main():
 
 
 def encryptMessage(key, message):
+
     return translateMessage(key, message, 'encrypt')
 
 
 def decryptMessage(key, message):
+
     return translateMessage(key, message, 'decrypt')
 
 
 def translateMessage(key, message, mode):
+
     translated = [] # Stores the encrypted/decrypted message string.
 
     keyIndex = 0
@@ -45,25 +52,28 @@ def translateMessage(key, message, mode):
             elif mode == 'decrypt':
                 num -= LETTERS.find(key[keyIndex]) # Subtract if decrypting.
 
-            num %= len(LETTERS) # Handle any wraparound.
+            num %= len(LETTERS) # Handle wrap around.
 
             # Add the encrypted/decrypted symbol to the end of translated:
+
             if symbol.isupper():
                 translated.append(LETTERS[num])
             elif symbol.islower():
                 translated.append(LETTERS[num].lower())
 
-            keyIndex += 1 # Move to the next letter in the key.
+            keyIndex +=1 # Move to the next letter in the key.
+
             if keyIndex == len(key):
                 keyIndex = 0
+
         else:
-            # Append the symbol without encrypting/decrypting.
+
+            # Append the symbol without encrypting/decrypting:
+
             translated.append(symbol)
 
     return ''.join(translated)
 
 
-# If vigenereCipher.py is run (instead of imported as a module) call
-# the main() function.
 if __name__ == '__main__':
-    main()
+    main()    
