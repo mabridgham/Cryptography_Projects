@@ -7,7 +7,7 @@
 # and back again, meaning the cipher is essentially a standard substitution
 # cipher with a rule governing which letter goes to which.
 
-import pyperclip, affineCipher, detectEnglish, cryptomath
+import pyperclip, affineCipherMB, detectEnglishMB, cryptomathMB
 
 SILENT_MODE = False
 
@@ -42,17 +42,17 @@ def hackAffine(message):
 
     # Brute-force by looping through every possible key
     
-    for key in range(len(affineCipher.SYMBOLS) ** 2):
-        keyA = affineCipher.getKeyParts(key)[0]
-        if cryptomath.gcd(keyA, len(affineCipher.SYMBOLS)) != 1:
+    for key in range(len(affineCipherMB.SYMBOLS) ** 2):
+        keyA = affineCipherMB.getKeyParts(key)[0]
+        if cryptomathMB.gcd(keyA, len(affineCipherMB.SYMBOLS)) != 1:
             continue
 
-        decryptedText = affineCipher.decryptMessage(key, message)
+        decryptedText = affineCipherMB.decryptMessage(key, message)
         
         if not SILENT_MODE:
             print('Tried Key %s... (%s)' % (key, decryptedText[:40]))
 
-        if detectEnglish.isEnglish(decryptedText):
+        if detectEnglishMB.isEnglish(decryptedText):
             
             # Check with the user if the decrypted key has been found.
             
