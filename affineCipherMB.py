@@ -7,7 +7,7 @@
 # and back again, meaning the cipher is essentially a standard substitution
 # cipher with a rule governing which letter goes to which.
 
-import sys, pyperclip, cryptomath, random
+import sys, pyperclip, cryptomathMB, random
 
 SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
 
@@ -47,7 +47,7 @@ def checkKeys(keyA, keyB, mode):
     if keyA < 0 or keyB < 0 or keyB > len(SYMBOLS) - 1:
         sys.exit('Key A must be greater than 0 and Key B must be between 0 and %s.' % (len(SYMBOLS) - 1))
         
-    if cryptomath.gcd(keyA, len(SYMBOLS)) != 1:
+    if cryptomathMB.gcd(keyA, len(SYMBOLS)) != 1:
         sys.exit('Key A (%s) and the symbol set size (%s) are not relatively prime. Choose a different key.' % (keyA, len(SYMBOLS)))
 
 
@@ -74,7 +74,7 @@ def decryptMessage(key, message):
     keyA, keyB = getKeyParts(key)
     checkKeys(keyA, keyB, 'decrypt')
     plaintext = ''
-    modInverseOfKeyA = cryptomath.findModInverse(keyA, len(SYMBOLS))
+    modInverseOfKeyA = cryptomathMB.findModInverse(keyA, len(SYMBOLS))
 
     for symbol in message:
         if symbol in SYMBOLS:
@@ -94,7 +94,7 @@ def getRandomKey():
     while True:
         keyA = random.randint(2, len(SYMBOLS))
         keyB = random.randint(2, len(SYMBOLS))
-        if cryptomath.gcd(keyA, len(SYMBOLS)) == 1:
+        if cryptomathMB.gcd(keyA, len(SYMBOLS)) == 1:
             return keyA * len(SYMBOLS) + keyB
 
 
