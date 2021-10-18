@@ -1,21 +1,18 @@
 # http://www.nostarch.com/impracticalpythonprojects (BSD Licensed)
+# Load a dictionary file as a list.
+# Arguments:
+# -dictionary file name
+# Exceptions:
+# -IOError
+# -Requires import sys
 
-"""Load a dictionary file as a list.
-
-Arguments:
--dictionary file name
-
-Exceptions:
--IOError
-
--Requires import sys
-
-"""
    
 import sys
     
 def load(filename):
-    """Open dict text file, check for errors, & make word list."""
+    
+    # Open dict text file, check for errors, & make word list.
+    
     try:
         with open(filename) as my_file:
             my_list = my_file.read().strip().split('\n')
