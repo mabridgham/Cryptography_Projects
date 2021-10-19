@@ -17,6 +17,20 @@
 import sys, os, random, string
 from collections import defaultdict, Counter
 
+# Print greeting:
+
+print('''To use, enter either a short plaintext message or the encrypted text you wish
+to decrypt. Then choose which operation you would like to perform (encrypt or decrypt).
+Choose the amount of shift you wish to use. In the original book version of this cipher
+this represented the day of the year and therefore the page number in the book that the
+person would use. This doesn't translate to a digital version but is still an effective
+way to use the cipher as a one time pad. Finally, input the filename of the book you wish
+to use with a .txt extension.\n
+When encrypting, your message will be translated into a series of numbers. This is your cipher.
+When decrypting, copy this code into the message input and choose decrypt along with the same
+number shift you previously used to create the code and the same file name to see the
+translated message.\n''')
+
 
 def main():
 
