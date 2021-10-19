@@ -6,6 +6,13 @@
 # Since that book is not available in the public domain this program will
 # use a book file chosen by the user.
 
+# There are many free open source books available online for download. It is interesting
+# to try different ones and see how the cipher works or doesn't depending on the message
+# you choose. This is because it uses the words in the book to create the cipher. If the
+# word you choose is not in the book it can not use it. I have added a few books to try
+# for this reason. The Hound of the Baskervilles by Sir Arthur Conan Doyle (hound.txt),
+# The Lost World by Sir Arthur Conan Doyle (lost.txt), and War of the Worlds by
+# H. G. Wells.
 
 import sys, os, random, string
 from collections import defaultdict, Counter
