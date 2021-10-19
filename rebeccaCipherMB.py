@@ -1,38 +1,42 @@
-"""Book code using the novel The Lost World
-For words not in book, spell-out with first letter of words.
-Flag 'first letter mode' by bracketing between alternating
-'a a' and 'the the'.
-credit: Eric T. Mortenson
-"""
-import sys
-import os
-import random
-import string
+# Rebecca Book Cipher
+# https://www.nostarch.com/real-world-python (BSD Licensed)
+# The Rebecca Book Cipher is a variation of the one time pad cipher used
+# by Nazi spies during World War II.
+# The original Cipher used the book Rebecca by Daphne du Maurier as the key.
+# Since that book is not available in the public domain this program will
+# use a book file chosen by the user.
+
+
+import sys, os, random, string
 from collections import defaultdict, Counter
+
+
 def main():
-    message = input("Enter plaintext or ciphertext: ") 
-    process = input("Enter 'encrypt' or 'decrypt': ")  
-    shift = int(input("Shift value (1-365) = "))
+
+    message = input("Enter plaintext or ciphertext: ")
+    process = input("Enter 'encrypt' or 'decrypt': ")
+    shift = int(input("Shift value(1-365) = "))
     infile = input("Enter filename with extension: ")
-    
+
     if not os.path.exists(infile):
         print("File {} not found. Terminating.".format(infile), file=sys.stderr)
-        sys.exit(1)        
+        sys.exit(1)
     word_list = load_file(infile)
     word_dict = make_dict(word_list, shift)
     letter_dict = make_letter_dict(word_list)
+
     if process == 'encrypt':
-        ciphertext = encrypt(message, word_dict, letter_dict)          
-        count = Counter(ciphertext)        
+        ciphertext = encrypt(message, word_dict, letter_dict)
+        count = Counter(ciphertext)
         encryptedWordList = []
         for number in ciphertext:
             encryptedWordList.append(word_list[number - shift])
-        
-        print("\nencrypted word list = \n {} \n"
-              .format(' '.join(encryptedWordList)))           
-        print("encrypted ciphertext = \n {}\n".format(ciphertext))
-        
-        # Check the encryption by decrypting the ciphertext.
+
+        print("\nencrypted word list = \n {} \n".format(''.join(encryptedWordList)))
+        print("encrypted ciphertext = \n {} \n".format(ciphertext))
+
+        # Check the encryption by decrypting the ciphertext:
+
         print("decrypted plaintext = ")
         singleFirstCheck = False
         for cnt, i in enumerate(ciphertext):
@@ -45,59 +49,81 @@ def main():
                 continue
             if singleFirstCheck == True and cnt<len(ciphertext)-1 and \
                word_list[ciphertext[cnt]-shift] == 'the' and \
-                             word_list[ciphertext[cnt+1]-shift] == 'the':
+               word_list[ciphertext[cnt+1]-shift] == 'the':
                 continue
             if singleFirstCheck == True and \
                word_list[ciphertext[cnt]-shift] == 'the' and \
-                             word_list[ciphertext[cnt-1]-shift] == 'the':
+               word_list[ciphertext[cnt-1]-shift] == 'the':
                 singleFirstCheck = False
-                print(' ', end='', flush=True)
+                print('', end='', flush=True)
                 continue
             if singleFirstCheck == True:
-                print(word_list[i - shift][0], end = '', flush=True)
+                print(word_list[i - shift][0], end='', flush=True)
             if singleFirstCheck == False:
-                print(word_list[i - shift], end=' ', flush=True)
+                print(word_list[i-shift], end='', flush=True)
     elif process == 'decrypt':
-        plaintext = decrypt(message, word_list, shift)
-        print("\ndecrypted plaintext = \n {}".format(plaintext))
+            plaintext = decrypt(message, word_list, shift)
+            print("\ndecrypted plaintext = \n {}".format(plaintext))
+
+
 def load_file(infile):
-    """Read and return text file as a list of lowercase words."""
+
+    # Read and return text file as a list of lowercase words.
+
     with open(infile, encoding='utf-8') as file:
         words = [word.lower() for line in file for word in line.split()]
         words_no_punct = ["".join(char for char in word if char not in \
-                                 string.punctuation) for word in words]
+                                  string.punctuation) for word in words]
+        
     return words_no_punct
+
+
 def make_dict(word_list, shift):
-    """Return dictionary of characters as keys and shifted indexes as values."""
+    
+    # Return dictionary of characters as keys and shifted indexes as values.
+    
     word_dict = defaultdict(list)
     for index, word in enumerate(word_list):
         word_dict[word].append(index + shift)
+
     return word_dict
+        
 
 def make_letter_dictQC(firstLetterDict):
+
     sm = 0
     for letter in firstLetterDict.keys():
         sm += len(firstLetterDict[letter])
 ##        print(repr(letter), len(firstLetterDict[letter]))
 ##    print('Words starting with numbers are not counted...\n')
+
     return
 
+
 def make_letter_dict(word_list):
+    
     firstLetterDict = defaultdict(list)
     for word in word_list:
         if len(word) > 0:
             if word[0].isalpha():
                 firstLetterDict[word[0]].append(word)
     make_letter_dictQC(firstLetterDict)
+    
     return firstLetterDict
 
+
 def encrypt(message, word_dict, letter_dict):
-    """Return list of indexes representing characters in a message."""
+    
+    # Return list of indexes representing characters in a message.
+
     encrypted = []
-    # remove punctuation from message words
+    
+    # Remove punctuation from message words
+    
     messageWords = message.lower().split()
     messageWordsNoPunct = ["".join(char for char in word if char not in \
-                                 string.punctuation) for word in messageWords]    
+                                 string.punctuation) for word in messageWords]
+    
     for word in messageWordsNoPunct:
         if len(word_dict[word]) > 1:
             index = random.choice(word_dict[word])
@@ -125,22 +151,35 @@ def encrypt(message, word_dict, letter_dict):
             encrypted.append(random.choice(word_dict['the']))
             continue
         encrypted.append(index)
+        
     return encrypted
+
+
 def decrypt(message, word_list, shift):
-    """Decrypt ciphertext string and return plaintext word string.
-    This shows how plaintext looks before extracting first letters.
-    """
+    
+    # Decrypt ciphertext string and return plaintext word string.
+    # This shows how plaintext looks before extracting first letters.
+    
     plaintextList = []
     indexes = [s.replace(',', '').replace('[', '').replace(']', '')
                for s in message.split()]
+    
     for count, i in enumerate(indexes):
         plaintextList.append(word_list[int(i) - shift])
+        
     return ' '.join(plaintextList)
+
+
 def check_for_fail(ciphertext):
-    """Return True if ciphertext contains any duplicate keys."""
+    
+    # Return True if ciphertext contains any duplicate keys.
+    
     check = [k for k, v in Counter(ciphertext).items() if v > 1]
     if len(check) > 0:
         print(check)
         return True
+
+
 if __name__ == '__main__':
     main()
+
