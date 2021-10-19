@@ -1,9 +1,13 @@
-"""Hide a null cipher within a vocabulary list."""
-from random import randint
-import string
-import load_dictionaryMB
+# Hide a null cipher within a vocabulary list.
+# https://www.nostarch.com/impracticalpythonprojects (BSD Licensed)
 
-# write a short message and use no punctuation or numbers!
+
+from random import randint
+import string, load_dictionaryMB
+
+
+# Write a short message and use no punctuation or numbers!
+
 input_message = "Panel at east end of chapel slides"
 
 message = ''
@@ -13,10 +17,12 @@ for char in input_message:
 print(message, "\n")
 message = "".join(message.split())
 
-# open dictionary file
+# Open dictionary file
+
 word_list = load_dictionaryMB.load('2of4brif.txt')
 
-# build vocabulary word list with hidden message
+# Build vocabulary word list with hidden message
+
 vocab_list = []
 for letter in message:
     size = randint(6, 10)
