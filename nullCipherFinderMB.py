@@ -1,18 +1,27 @@
-"""Decode a null cipher based on number of letters after punctuation marks."""
-import sys
-import string
+# Decode a null cipher based on number of letters after punctuation marks.
+# https://www.nostarch.com/impracticalpythonprojects (BSD Licensed)
+
+# This program is based on the Trevanion Cipher. The Trevanion Cipher originally used
+# the third letter after punctuation to create a message. You can use a different text
+# and offset other than 3 to look for hidden messages in other documents. For the
+# purpose of demonstration, the original letter sent to Sir John Trevanion to help
+# him escape moments before his execution in 1642 has been included here called
+# trevanion.txt.
+
+import sys, string
 
 def load_text(file):
-    """Load a text file as a string."""
+    # Load a text file as a string.
+    
     with open(file) as f:
         return f.read().strip()
          
 def solve_null_cipher(message, lookahead):
-    """Solve a null cipher based on number letters after punctuation mark.
-
-    message = null cipher text as string stripped of whitespace
-    lookahead = endpoint of range of letters after punctuation mark to examine
-    """
+    
+    # Solve a null cipher based on number letters after punctuation mark.
+    # message = null cipher text as string stripped of whitespace
+    # lookahead = endpoint of range of letters after punctuation mark to examine
+    
     for i in range(1, lookahead + 1):
         plaintext = ''
         count = 0
@@ -29,8 +38,11 @@ def solve_null_cipher(message, lookahead):
         print()
 
 def main():
-    """Load text, solve null cipher."""
-    # load & process message:
+    
+    # Load text, solve null cipher.
+    
+    # Load & process message:
+    
     filename = input("\nEnter full filename for message to translate: ")
     try:
         loaded_message = load_text(filename)
@@ -42,10 +54,12 @@ def main():
     print("\nList of punctuation marks to check = {}".
           format(string.punctuation), "\n")
     
-    # remove whitespace:
+    # Remove whitespace:
+    
     message = ''.join(loaded_message.split())
 
-    # get range of possible cipher keys from user:
+    # Get range of possible cipher keys from user:
+    
     while True:
         lookahead = input("\nNumber of letters to check after " \
                           "punctuation mark: ")
@@ -56,7 +70,8 @@ def main():
             print("Please input a number.", file=sys.stderr)           
     print()
 
-    # run function to decode cipher:
+    # Run function to decode cipher:
+    
     solve_null_cipher(message, lookahead)
     
 if __name__ == '__main__':
