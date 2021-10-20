@@ -13,7 +13,7 @@ letters of the plaintext are systematically replaced by substitute letters.\n'''
 
 def main():
 
-    myMessage = input('Enter message: ') # Allow the user to enter message.
+    myMessage = 'If a man is offered a fact which goes against his instincts, he will scrutinize it closely, and unless the evidence is overwhelming, he will refuse to believe it. If, on the other hand, he is offered something which affords a reason for acting in accordance to his instincts, he will accept it even on the slightest evidence. The origin of myths is explained in this way. -Bertrand Russell'
     myKey = getRandomKey() # Get random key
     myMode = 'encrypt' # Set to 'encrypt' or 'decrypt'.
 
