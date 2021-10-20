@@ -11,7 +11,7 @@ LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 def main():
 
     myMessage = 'If a man is offered a fact which goes against his instincts, he will scrutinize it closel_, and unless the evidence is overwhelming, he will refuse to _elieve it. If, on the other hand, he is offered something which affords a reason for acting in accordance to his instincts, he will acce_t it even on the slightest evidence. The origin of m_ths is e__lained in this wa_. -_ertrand Russell'
-    myKey = 'LFWOAYUISVKMNXPBDCRJTQEGHZ'
+    myKey = getRandomKey() # Get random key
     myMode = 'encrypt' # Set to 'encrypt' or 'decrypt'.
 
     if not keyIsValid(myKey):
