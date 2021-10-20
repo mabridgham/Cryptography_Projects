@@ -7,6 +7,9 @@ import pyperclip, sys, random
 
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+print('''A Substitution Cipher is a simple monoalphabetic cipher in which the
+letters of the plaintext are systematically replaced by substitute letters.\n''')
+
 
 def main():
 
