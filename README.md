@@ -1,5 +1,8 @@
 # Cryptography_Projects
 
+The goal of this project is to eventually combine a collection of small python cryptography programs together to make one larger command
+line tool that people can use for all of their cryptography needs and entertainment.
+
 Collection of open source Cryptography python projects that I am currently working on. All source code programs were
 obtained and modified from the sources below, as well as any .txt files that are included. Also, some of the 
 programs require the use of secondary programs called pyperclip.py, wordPatterns.py and makeWordPatterns.py
